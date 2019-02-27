@@ -69,7 +69,6 @@ model = Sequential()
 # remove top 70, bottom 25px, leave left / right as is
 model.add(Cropping2D(cropping=((70, 25), (0, 0)), dim_ordering='tf', input_shape=(160, 320, 3)))
 
-
 # Normalisation:
 model.add(Lambda(lambda x: x/255.0 - 0.5, input_shape=(65, 320, 3), output_shape=(65, 320, 3)))
 
@@ -91,7 +90,6 @@ model.add(Dropout(0.2))
 model.add(Flatten())
 
 # RELU activation layers:
-model.add(Dense(1164, activation='relu'))
 model.add(Dense(100, activation='relu'))
 model.add(Dropout(0.3))
 model.add(Dense(50, activation='relu'))
@@ -101,6 +99,6 @@ model.add(Dense(1, activation='tanh'))
 model.compile(loss='mse', optimizer='adam')
 model.fit_generator(train_generator, samples_per_epoch= \
             len(train_samples), validation_data=validation_generator, \
-            nb_val_samples=len(validation_samples), nb_epoch=7)
+            nb_val_samples=len(validation_samples), nb_epoch=2)
 
 model.save('model.h5')
