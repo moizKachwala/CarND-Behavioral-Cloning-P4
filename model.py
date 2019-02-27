@@ -91,7 +91,6 @@ model.add(Dropout(0.2))
 model.add(Flatten())
 
 # RELU activation layers:
-model.add(Dense(1164, activation='relu'))
 model.add(Dense(100, activation='relu'))
 model.add(Dropout(0.3))
 model.add(Dense(50, activation='relu'))
